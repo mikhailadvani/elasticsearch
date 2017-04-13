@@ -1,0 +1,30 @@
+- name: Add elasticsearch repo
+  yum_repository:
+    name: elasticsearch
+    description: Elasticsearch repository for 2.x packages
+    baseurl: http://packages.elastic.co/elasticsearch/2.x/centos
+    gpgkey: http://packages.elastic.co/GPG-KEY-elasticsearch
+    gpgcheck: yes
+    enabled: yes
+  become: yes
+
+- name: Install elasticsearch package
+  yum:
+    name: elasticsearch
+    state: present
+  become: yes
+
+- name: Allow elasticsearch to serve requests only from localhost
+  lineinfile:
+    dest: /etc/elasticsearch/elasticsearch.yml
+    regexp: '(.*)network.host(.*)'
+    line: 'network.host: 127.0.0.1'
+  become: yes
+  notify: restart elasticsearch
+
+- name: Start elastic search service
+  service:
+    name: elasticsearch
+    state: started
+    enabled: yes
+  become: yes

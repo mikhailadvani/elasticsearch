@@ -1,0 +1,5 @@
+---
+# tasks file for elastic_search
+
+- name: "Setup elastic search for {{ansible_os_family}}"
+  include: "{{ansible_os_family}}.yml"
