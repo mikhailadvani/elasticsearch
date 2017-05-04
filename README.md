@@ -21,3 +21,10 @@ License
 -------
 
 Apache
+
+Author Information
+------------------
+
+The role was created in 2017 by [Mikhail Advani](https:///mikhailadvani.github.io)
+
+Twitter Handle: [@mikhail_advani](https://twitter.com/mikhail_advani "Twitter")
